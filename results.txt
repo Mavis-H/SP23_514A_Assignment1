@@ -1,0 +1,154 @@
+**********---------- UNIVARIATE RAW ----------**********
+[
+{
+feature: Cement (component 1)(kg in a m^3 mixture)
+learning rate: 3.4e-05
+m: 0.12136600849038642
+b: 0.00680925399238761
+rs_train: 0.1834545390311747
+rs_test: 0.09196001592326553
+}
+{
+feature: Blast Furnace Slag (component 2)(kg in a m^3 mixture)
+learning rate: 3.4e-05
+m: 0.21894137378737805
+b: 0.2705392138094456
+rs_train: -2.431132705583053
+rs_test: -1.6073653691061711
+}
+{
+feature: Fly Ash (component 3)(kg in a m^3 mixture)
+learning rate: 0.00034
+m: 0.2515272476433149
+b: 1.2142895238827387
+rs_train: -2.8076823159797977
+rs_test: -2.085320888963966
+}
+{
+feature: Water  (component 4)(kg in a m^3 mixture)
+learning rate: 3.4e-05
+m: 0.19209079456323883
+b: 0.012748083494381782
+rs_train: -0.20594188925276047
+rs_test: -0.19126197347776497
+}
+{
+feature: Superplasticizer (component 5)(kg in a m^3 mixture)
+learning rate: 0.034
+m: 1.1700393187897407
+b: 27.665972533764617
+rs_train: 0.11375476871712731
+rs_test: 0.2248892267178606
+}
+{
+feature: Coarse Aggregate  (component 6)(kg in a m^3 mixture)
+learning rate: 3.3999999999999996e-06
+m: 0.03652376921068729
+b: 0.000212633675359877
+rs_train: -0.08319884456331916
+rs_test: -0.08658149318938868
+}
+{
+feature: Fine Aggregate (component 7)(kg in a m^3 mixture)
+learning rate: 3.3999999999999996e-06
+m: 0.045625602895205286
+b: 0.0004701719388858293
+rs_train: -0.12660327055419596
+rs_test: -0.08374411239530288
+}
+{
+feature: Age (day)
+learning rate: 0.00034
+m: 0.30550836476104226
+b: 1.247647621131028
+rs_train: -2.1912270421697757
+rs_test: -1.5182022424260593
+}
+]
+**********---------- MULTIVARIATE RAW ----------**********
+[
+{
+feature: All RAW Features
+learning rate: 3.4000000000000003e-07
+m: [0.0707133977809532, 0.03111580209071989, 0.006765882081813946, -0.005992467550231852, 0.0047766399165495525, 0.006499820039228258, 0.008194049324078776, 0.035411562454573865]
+b: 3.4823719411444474e-05
+rs_train: 0.3765516826532169
+rs_test: 0.326464392008707
+}
+]
+**********---------- UNIVARIATE STANDARDIZED ----------**********[
+{
+feature: STD_Cement (component 1)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: 0.5020750788843952
+b: -2.4139363723330152e-05
+rs_train: 0.26108132981104204
+rs_test: 0.17512102574996646
+}
+{
+feature: STD_Blast Furnace Slag (component 2)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: 0.11856947576599644
+b: 0.01045320267522197
+rs_train: 0.015223424791062201
+rs_test: 0.043566741406020126
+}
+{
+feature: STD_Fly Ash (component 3)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: -0.11317009572891223
+b: 0.008044876657482951
+rs_train: 0.014014575473855762
+rs_test: 0.0033461968894871186
+}
+{
+feature: STD_Water  (component 4)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: -0.27326382964752377
+b: 0.011638888916633033
+rs_train: 0.07907386776418768
+rs_test: 0.11959069090662255
+}
+{
+feature: STD_Superplasticizer (component 5)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: 0.34736368770040216
+b: 0.013892037954401958
+rs_train: 0.12389321508640161
+rs_test: 0.200595152991221
+}
+{
+feature: STD_Coarse Aggregate  (component 6)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: -0.15231207934906418
+b: 0.00911697838341405
+rs_train: 0.025151813720197702
+rs_test: 0.04793491004871664
+}
+{
+feature: STD_Fine Aggregate (component 7)(kg in a m^3 mixture)
+learning rate: 0.33999999999999997
+m: -0.16328180163662537
+b: 0.008745861317643579
+rs_train: 0.029231938331678364
+rs_test: 0.029685274332271416
+}
+{
+feature: STD_Age (day)
+learning rate: 0.33999999999999997
+m: 0.3059864672687265
+b: 0.0024367109197682138
+rs_train: 0.10289239276780149
+rs_test: 0.14555180577081606
+}
+]
+**********---------- MULTIVARIATE STANDARDIZED ----------**********[
+{
+feature: All STD Features
+learning rate: 0.33999999999999997
+m: [0.743670625767417, 0.5211679165114383, 0.3312630180687578, -0.2042886512881244, 0.09138663688550738, 0.06804672068218738, 0.084475207468649, 0.4129970284508854]
+b: -0.001390585972711378
+rs_train: 0.6133190146169756
+rs_test: 0.6293627646833355
+}
+]
