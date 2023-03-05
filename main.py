@@ -11,12 +11,13 @@ import glob
 FEATURE_SIZE = 8
 TRAIN_SIZE = 900
 TEST_SIZE = 130
-EPOCH_SIZE = 100
-EPOCH_INCREASE_SIZE = 2
-CONVERGE_EPOCH_SIZE = 10
-CONVERGE_THRESHOLD = 10 ** -9
-LEARNING_RATE_RANGE_1 = 10
-LEARNING_RATE_RANGE_2 = 30
+EPOCH_SIZE = 100  # basic epoch size for learning rate tuning
+EPOCH_INCREASE_SIZE = 2  # increase the basic epoch size by this size in the actual training process
+CONVERGE_EPOCH_SIZE = 10  # converge epoch size to check whether the mse loss is converging
+CONVERGE_THRESHOLD = 10 ** -9  # mse loss change threshold between each epoch to check convergence
+START_LEARNING_RATE = 100
+LEARNING_RATE_RANGE_1 = 10  # the number of times we try the learning rate (divided by 10): 100, 10, 0.1...
+LEARNING_RATE_RANGE_2 = 30  # the number of times we try the learning rate (add prev_best_lr/10): 0.1, 0.11, 0.12...
 
 
 # Get train test split
@@ -162,7 +163,7 @@ def train_helper(X_train, X_test, y_train, y_test, is_multivariate=False):
             print("---------- FEATURE: " + X_train.columns[f] + " ----------")
         # Hyperparameter tuning
         # Test different learning rate exponentially first
-        learning_rate = 100
+        learning_rate = START_LEARNING_RATE
         converge_loss_array = []
         for _ in range(LEARNING_RATE_RANGE_1):
             learning_rate *= 10 ** -1
@@ -177,7 +178,7 @@ def train_helper(X_train, X_test, y_train, y_test, is_multivariate=False):
             if not math.isnan(loss) and not math.isinf(loss):
                 prev_min_loss = min(loss, prev_min_loss)
         prev_best_learning_rate_idx = converge_loss_array.index(prev_min_loss)
-        prev_best_learning_rate = 100 * (10 ** -(prev_best_learning_rate_idx + 1))
+        prev_best_learning_rate = START_LEARNING_RATE * (10 ** -(prev_best_learning_rate_idx + 1))
         print("First round loss: ", converge_loss_array)
         print("First round best lr: ", prev_best_learning_rate)
         print("First round best loss: ", prev_min_loss)
