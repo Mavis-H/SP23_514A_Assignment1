@@ -22,16 +22,16 @@ LEARNING_RATE_RANGE_2 = 30  # the number of times we try the learning rate (add 
 
 
 # Get train test split
-def my_train_test_split(all_data_df):
+def my_train_test_split(all_data_df, _standardization_data_df):
     for _i in range(FEATURE_SIZE, FEATURE_SIZE * 2):
         all_data_df.insert(_i,
-                           "STD_" + standardization_data_df.columns[_i - FEATURE_SIZE],
-                           standardization_data_df.iloc[:, _i - FEATURE_SIZE],
+                           "STD_" + _standardization_data_df.columns[_i - FEATURE_SIZE],
+                           _standardization_data_df.iloc[:, _i - FEATURE_SIZE],
                            allow_duplicates=True)
 
     all_data_df.insert(FEATURE_SIZE * 2 + 1,
-                       "STD_" + standardization_data_df.columns[FEATURE_SIZE],
-                       standardization_data_df.iloc[:, FEATURE_SIZE],
+                       "STD_" + _standardization_data_df.columns[FEATURE_SIZE],
+                       _standardization_data_df.iloc[:, FEATURE_SIZE],
                        allow_duplicates=True)
 
     # Separate training set and testing set
@@ -277,7 +277,7 @@ if __name__ == '__main__':
 
     # Get all required splits
     X_raw_train, X_std_train, X_raw_test, X_std_test, y_raw_train, y_std_train, y_raw_test, y_std_test = \
-        my_train_test_split(raw_data_df.copy())
+        my_train_test_split(raw_data_df.copy(), standardization_data_df)
 
     # Set up program output for report usage
     plots = glob.glob("figures/raw/*")
