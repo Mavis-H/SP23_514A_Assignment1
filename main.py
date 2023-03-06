@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import os
 import glob
+import sys
 
 FEATURE_SIZE = 8
 TRAIN_SIZE = 900
@@ -106,6 +107,7 @@ def train(X_train, y_train, _learning_rate, feature_idx=-1, show_plt=False, lr_t
                 converge_times += 1
                 if converge_times == CONVERGE_EPOCH_SIZE:
                     break
+
     print("lr: ", _learning_rate)
     print("mse: ", mse_loss_array)
     if show_plt:
@@ -287,28 +289,41 @@ if __name__ == '__main__':
     open("results.txt", "w").close()
     results_file = open("results.txt", "a")
 
+    # Check program running options: all, uni_raw, uni_std, multi_raw, multi_std
+    option = "all"
+    if len(sys.argv) == 2:
+        option = sys.argv[1]
+
     # Start algorithm for training different model
-    print("**********---------- UNIVARIATE RAW ----------**********")
-    univariate_raw_results = train_helper(X_raw_train, X_raw_test, y_raw_train, y_raw_test)
-    results_file.write("**********---------- UNIVARIATE RAW ----------**********\n")
-    results_file.write(result_to_string_helper(univariate_raw_results))
+    if option == "all" or option == "uni_raw":
+        print("**********---------- UNIVARIATE RAW ----------**********")
+        univariate_raw_results = train_helper(X_raw_train, X_raw_test, y_raw_train, y_raw_test)
+        results_file.write("**********---------- UNIVARIATE RAW ----------**********\n")
+        results_file.write(result_to_string_helper(univariate_raw_results))
 
-    print("**********---------- MULTIVARIATE RAW ----------**********")
-    multivariate_raw_result = train_helper(X_raw_train, X_raw_test, y_raw_train, y_raw_test, is_multivariate=True)
-    results_file.write("**********---------- MULTIVARIATE RAW ----------**********\n")
-    results_file.write(result_to_string_helper(multivariate_raw_result))
+    if option == "all" or option == "multi_raw":
+        print("**********---------- MULTIVARIATE RAW ----------**********")
+        multivariate_raw_result = train_helper(X_raw_train, X_raw_test, y_raw_train, y_raw_test, is_multivariate=True)
+        results_file.write("**********---------- MULTIVARIATE RAW ----------**********\n")
+        results_file.write(result_to_string_helper(multivariate_raw_result))
 
-    print("**********---------- UNIVARIATE STANDARDIZED ----------**********")
-    univariate_std_results = train_helper(X_std_train, X_std_test, y_std_train, y_std_test)
-    results_file.write("**********---------- UNIVARIATE STANDARDIZED ----------**********")
-    results_file.write(result_to_string_helper(univariate_std_results))
+    if option == "all" or option == "uni_std":
+        print("**********---------- UNIVARIATE STANDARDIZED ----------**********")
+        univariate_std_results = train_helper(X_std_train, X_std_test, y_std_train, y_std_test)
+        results_file.write("**********---------- UNIVARIATE STANDARDIZED ----------**********")
+        results_file.write(result_to_string_helper(univariate_std_results))
 
-    print("**********---------- MULTIVARIATE STANDARDIZED ----------**********")
-    multivariate_std_result = train_helper(X_std_train, X_std_test, y_std_train, y_std_test, is_multivariate=True)
-    results_file.write("**********---------- MULTIVARIATE STANDARDIZED ----------**********")
-    results_file.write(result_to_string_helper(multivariate_std_result))
+    if option == "all" or option == "multi_std":
+        print("**********---------- MULTIVARIATE STANDARDIZED ----------**********")
+        multivariate_std_result = train_helper(X_std_train, X_std_test, y_std_train, y_std_test, is_multivariate=True)
+        results_file.write("**********---------- MULTIVARIATE STANDARDIZED ----------**********")
+        results_file.write(result_to_string_helper(multivariate_std_result))
 
-    print(univariate_raw_results)
-    print(multivariate_raw_result)
-    print(univariate_std_results)
-    print(multivariate_std_result)
+    if option == "all" or option == "uni_raw":
+        print(univariate_raw_results)
+    if option == "all" or option == "multi_raw":
+        print(multivariate_raw_result)
+    if option == "all" or option == "uni_std":
+        print(univariate_std_results)
+    if option == "all" or option == "multi_std":
+        print(multivariate_std_result)
